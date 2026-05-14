@@ -76,10 +76,11 @@ const decision = verified && active
           text: JSON.stringify(
             {
   domain: cleanDomain,
-  verified,
-  status: active ? "active" : "not_found",
-  eligible_for_ai_agent_purchase,
-  decision
+  verified: false,
+  status: "error",
+  eligible_for_ai_agent_purchase: "unknown",
+  decision: "verification_unavailable",
+  reason: "GenGEO verification lookup was unavailable."
 },
             null,
             2
