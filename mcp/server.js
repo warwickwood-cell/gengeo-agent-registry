@@ -59,6 +59,8 @@ server.registerTool(
 
     const data = await response.json();
 
+    console.log("GenGEO response:", data);
+
     const verified = data.verified === true;
     const active = data.status === "active" || data.status === "verified";
     const eligible = data.eligible_for_purchase === true || (verified && active);
