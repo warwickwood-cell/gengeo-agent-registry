@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",
+    "node-fetch": "^3.3.2",
     "zod": "latest"
   }
 }

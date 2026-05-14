@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import fetch from "node-fetch";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -73,7 +72,6 @@ server.registerTool(
         ]
       };
     } catch (error) {
-  console.error("FETCH ERROR:", error);
       return {
         content: [
           {
