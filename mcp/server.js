@@ -29,6 +29,8 @@ server.registerTool(
       .trim()
       .toLowerCase();
 
+    console.log("Verifying:", cleanDomain);
+
     const url = `${GENGEO_VERIFY_ENDPOINT}?domain=${encodeURIComponent(cleanDomain)}`;
 
     const response = await fetch(url);
