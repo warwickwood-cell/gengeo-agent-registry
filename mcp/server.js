@@ -62,21 +62,25 @@ server.registerTool(
     console.log("GenGEO response:", data);
 
     const verified = data.verified === true;
-    const active = data.status === "active" || data.status === "verified";
-    const eligible = data.eligible_for_purchase === true || (verified && active);
+const active = data.status === "active" || data.status === "verified";
+const eligible_for_ai_agent_purchase = verified && active ? "yes" : "unknown";
 
+const decision = verified && active
+  ? "verified"
+  : "verification_required";
+    
     return {
       content: [
         {
           type: "text",
           text: JSON.stringify(
             {
-              domain: cleanDomain,
-              verified,
-              status: active ? "active" : "inactive",
-              eligible_for_purchase: eligible,
-              decision: eligible ? "eligible" : "ineligible"
-            },
+  domain: cleanDomain,
+  verified,
+  status: active ? "active" : "not_found",
+  eligible_for_ai_agent_purchase,
+  decision
+},
             null,
             2
           )
