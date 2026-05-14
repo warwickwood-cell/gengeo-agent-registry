@@ -29,7 +29,7 @@ server.registerTool(
       .trim()
       .toLowerCase();
 
-    console.log("Verifying:", cleanDomain);
+    console.error("Verifying:", cleanDomain);
 
     const url = `${GENGEO_VERIFY_ENDPOINT}?domain=${encodeURIComponent(cleanDomain)}`;
 
@@ -59,7 +59,7 @@ server.registerTool(
 
     const data = await response.json();
 
-    console.log("GenGEO response:", data);
+   console.error("GenGEO response:", data);
 
     const verified = data.verified === true;
 const active = data.status === "active" || data.status === "verified";
