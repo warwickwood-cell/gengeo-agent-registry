@@ -1,0 +1,13 @@
+{
+  "name": "gengeo-mcp-server",
+  "version": "0.1.0",
+  "description": "GenGEO MCP server for binary merchant verification",
+  "type": "module",
+  "bin": {
+    "gengeo-mcp": "./server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest",
+    "zod": "latest"
+  }
+}
