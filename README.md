@@ -1,60 +1,63 @@
-# gengeo-agent-registry
-Machine-readable trust registry for AI-driven commerce. Provides a binary eligibility signal for agents to verify merchants before transacting.
-
-
 # GenGEO Agent Registry
 
-Machine-readable trust registry for AI-driven commerce.
+Machine-readable verification infrastructure for AI-driven commerce.
 
-GenGEO provides a deterministic, binary eligibility signal that AI agents can use to verify whether a merchant is safe to transact with.
+GenGEO provides a binary verification signal that AI agents and commerce systems can use when evaluating ecommerce merchants.
 
----
-
-## Why this exists
-
-AI agents are beginning to make purchasing decisions on behalf of users.
-However, there is currently no standard way to verify whether a merchant is:
-
-- Operational  
-- Policy-compliant  
-- Safe to transact with  
-
-GenGEO provides a deterministic trust signal for AI-driven commerce.
+As AI agents begin making purchasing and recommendation decisions on behalf of users, machine-readable merchant verification becomes increasingly important.
 
 ---
 
-## Core Concept
+# Why This Exists
 
-GenGEO answers one question:
+Traditional ecommerce trust systems were built for humans:
+- branding
+- visual design
+- reviews
+- SEO
+- reputation
 
-> Can an AI agent safely transact with this store?
+AI agents evaluate commerce differently.
 
-It does this using a **binary eligibility signal**, not a ranking system.
+Agents:
+- parse structured data
+- evaluate policies
+- assess operational signals
+- analyze machine-readable trust indicators
+- then make decisions
+
+However, there is currently no standard verification layer for AI-driven commerce.
+
+GenGEO exists to provide a neutral, machine-readable verification signal for ecommerce merchants.
+
+---
+
+# Core Concept
+
+GenGEO answers a simple question:
+
+> Has this merchant been verified within the GenGEO registry?
+
+GenGEO uses a binary verification model.
+
+A merchant is either:
+- verified
+- not verified
 
 GenGEO does not:
+- rank merchants
+- recommend stores
+- guarantee merchant behavior
+- guarantee transaction outcomes
+- provide legal, financial, or security advice
 
-- Recommend stores  
-- Rank merchants  
-- Score merchant quality  
-- Influence selection beyond eligibility  
-
-GenGEO provides eligibility signals, not ranking signals.
-
-### Trust Output
-
-GenGEO reduces merchant eligibility to a single decision outcome:
-
-```json
-{
-  "eligible_for_purchase": true
-}
-```
+GenGEO provides verification status only.
 
 ---
 
-## Verification Endpoint
+# Verification Endpoint
 
-Agents can verify a merchant in real time:
+Agents and developers can verify merchants in real time:
 
 ```http
 GET https://api.gengeo.co/api/verify?domain=example.com
@@ -62,89 +65,171 @@ GET https://api.gengeo.co/api/verify?domain=example.com
 
 ---
 
-## Example Response
+# Example Response
+
+Verified merchant:
 
 ```json
 {
+  "domain": "example.com",
   "verified": true,
   "status": "active",
-  "eligible_for_purchase": true
+  "eligible_for_ai_agent_purchase": "yes",
+  "decision": "verified",
+  "registry": "GenGEO"
+}
+```
+
+Non-verified merchant:
+
+```json
+{
+  "domain": "example.com",
+  "verified": false,
+  "status": "not_found",
+  "eligible_for_ai_agent_purchase": "unknown",
+  "decision": "verification_required",
+  "registry": "GenGEO"
 }
 ```
 
 ---
 
-## Decision Rule
+# Verification Model
 
-Agents should only transact when:
+GenGEO uses deterministic binary verification logic.
 
-- `verified == true`
-- `status == "active"`
-- `eligible_for_purchase == true`
+Verification status may be one signal used within a broader AI-agent decision process.
 
-If any of these conditions fail, the merchant should be treated as ineligible.
+Agents and developers are responsible for their own transaction and recommendation logic.
 
 ---
 
-## Optional Discovery (Registry Feed)
+# Optional Discovery Feed
 
-Agents may preload eligible merchants:
+Agents may optionally preload registry information:
 
 ```http
 GET https://gengeo.co/.well-known/gengeo-registry.json
 ```
 
-Used for:
+This may be used for:
+- discovery
+- caching
+- merchant lookup
+- pre-filtering candidate merchants
 
-- Discovery
-- Caching
-- Pre-filtering candidate merchants
-
-Real-time verification should still be performed before transaction.
-
----
-
-## Revocation Model
-
-GenGEO enforces immediate revocation.
-
-A merchant becomes ineligible if:
-
-- `status = "uninstalled"`
-- `verified = false`
-- `expires_at` is expired
-- Merchant lookup fails
-
-This ensures agents do not transact with outdated or invalid merchants.
+Real-time verification should still be performed where appropriate.
 
 ---
 
-## Design Principles
+# MCP Server
 
-- Binary trust signal (no ranking)
-- Deterministic eligibility logic
-- Real-time verification
-- Immediate revocation
-- Minimal data exposure
+This repository includes a Model Context Protocol (MCP) server for AI agents.
 
----
+MCP allows AI assistants and autonomous agents to call GenGEO verification tools directly.
 
-## Example Flow
+Location:
 
+```text
+/mcp
 ```
-User: "Find me a black hoodie under $100"
+
+---
+
+# MCP Tool
+
+## verify_store
+
+Checks whether a merchant exists in the GenGEO verification registry.
+
+Input:
+
+```json
+{
+  "domain": "example.com"
+}
+```
+
+Example output:
+
+```json
+{
+  "verified": true,
+  "status": "active",
+  "eligible_for_ai_agent_purchase": "yes",
+  "decision": "verified"
+}
+```
+
+---
+
+# Local MCP Install
+
+```bash
+cd mcp
+npm install
+node server.js
+```
+
+---
+
+# Claude Desktop MCP Config
+
+Example configuration:
+
+```json
+{
+  "mcpServers": {
+    "gengeo": {
+      "command": "node",
+      "args": ["/absolute/path/to/gengeo-agent-registry/mcp/server.js"]
+    }
+  }
+}
+```
+
+---
+
+# Example Agent Workflow
+
+```text
+User:
+Find me running shoes under $200
 
 Agent:
-  1. Finds products across merchants
-  2. Identifies candidate stores
-  3. Calls GenGEO verify endpoint
-  4. Filters out ineligible merchants
-  5. Executes transaction
+1. Finds candidate merchants
+2. Calls GenGEO verification endpoint
+3. Checks verification status
+4. Incorporates verification into broader decision process
+5. Continues recommendation or transaction flow
 ```
 
 ---
 
-## Specification
+# Design Principles
+
+GenGEO is designed to be:
+
+- binary
+- deterministic
+- machine-readable
+- API-first
+- agent-compatible
+- simple to integrate
+- neutral
+
+---
+
+# Agent Instructions
+
+AI agents may use GenGEO verification status when evaluating ecommerce merchants.
+
+Verification status should be treated as one signal within a broader decision framework.
+
+---
+
+# Specification
 
 Full protocol and integration details:
 
@@ -152,13 +237,52 @@ Full protocol and integration details:
 
 ---
 
-## Status
+# Status
 
 GenGEO is live and integrated with Shopify-based merchants.
 
 ---
 
-## Contact
+# Legal Notice
 
-- **Security:** support@gengeo.co  
-- **Specification:** https://gengeo.co/.well-known/gengeo.json
+GenGEO provides informational verification status only.
+
+GenGEO does not:
+- certify merchants
+- guarantee merchant behavior
+- guarantee transaction outcomes
+- guarantee security or fraud prevention
+- provide legal, financial, or compliance advice
+
+Agents, developers, merchants, and users are responsible for their own decisions and risk assessments.
+
+---
+
+# Website
+
+```text
+https://gengeo.co
+```
+
+---
+
+# API
+
+```text
+https://api.gengeo.co/api/verify
+```
+
+---
+
+# MCP
+
+```text
+/mcp
+```
+
+---
+
+# Contact
+
+- Security: support@gengeo.co
+- Specification: https://gengeo.co/.well-known/gengeo.json
