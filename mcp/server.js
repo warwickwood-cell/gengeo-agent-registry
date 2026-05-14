@@ -16,7 +16,7 @@ server.registerTool(
   {
     title: "Verify Store",
     description:
-      "Check whether an ecommerce merchant is verified and eligible for AI-agent purchase using the GenGEO binary trust registry.",
+      "Check whether an ecommerce merchant is verified in the GenGEO trust registry.",
     inputSchema: {
       domain: z.string().min(3).describe("Merchant domain, e.g. example.com")
     }
@@ -29,65 +29,65 @@ server.registerTool(
       .trim()
       .toLowerCase();
 
-    console.error("Verifying:", cleanDomain);
+    try {
+      const url = `${GENGEO_VERIFY_ENDPOINT}?domain=${encodeURIComponent(cleanDomain)}`;
+      const response = await fetch(url);
 
-    const url = `${GENGEO_VERIFY_ENDPOINT}?domain=${encodeURIComponent(cleanDomain)}`;
+      if (!response.ok) {
+        return {
+          content: [
+            {
+              type: "text",
+              text: JSON.stringify({
+                domain: cleanDomain,
+                verified: false,
+                status: "lookup_error",
+                eligible_for_ai_agent_purchase: "unknown",
+                decision: "verification_unavailable",
+                reason: "GenGEO verification lookup was unavailable."
+              })
+            }
+          ]
+        };
+      }
 
-    const response = await fetch(url);
+      const data = await response.json();
 
-    if (!response.ok) {
+      const verified = data.verified === true;
+      const active = data.status === "active" || data.status === "verified";
+
       return {
         content: [
           {
             type: "text",
-            text: JSON.stringify(
-              {
-                domain: cleanDomain,
-                verified: false,
-                status: "error",
-                eligible_for_purchase: false,
-                decision: "ineligible",
-                reason: "GenGEO verification lookup failed."
-              },
-              null,
-              2
-            )
+            text: JSON.stringify({
+              domain: cleanDomain,
+              verified,
+              status: verified && active ? "active" : "not_found",
+              eligible_for_ai_agent_purchase: verified && active ? "yes" : "unknown",
+              decision: verified && active ? "verified" : "verification_required",
+              registry: "GenGEO"
+            })
+          }
+        ]
+      };
+    } catch (error) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify({
+              domain: cleanDomain,
+              verified: false,
+              status: "lookup_error",
+              eligible_for_ai_agent_purchase: "unknown",
+              decision: "verification_unavailable",
+              reason: "GenGEO verification lookup could not be completed."
+            })
           }
         ]
       };
     }
-
-    const data = await response.json();
-
-   console.error("GenGEO response:", data);
-
-    const verified = data.verified === true;
-const active = data.status === "active" || data.status === "verified";
-const eligible_for_ai_agent_purchase = verified && active ? "yes" : "unknown";
-
-const decision = verified && active
-  ? "verified"
-  : "verification_required";
-    
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify(
-            {
-  domain: cleanDomain,
-  verified: false,
-  status: "error",
-  eligible_for_ai_agent_purchase: "unknown",
-  decision: "verification_unavailable",
-  reason: "GenGEO verification lookup was unavailable."
-},
-            null,
-            2
-          )
-        }
-      ]
-    };
   }
 );
 
