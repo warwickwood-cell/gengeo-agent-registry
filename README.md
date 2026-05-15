@@ -282,6 +282,26 @@ https://api.gengeo.co/api/verify
 
 ---
 
+
+## How GenGEO Fits Into Agentic Commerce
+
+```text
+User request
+   ↓
+AI shopping agent
+   ↓
+Identifies merchant
+   ↓
+Calls GenGEO verify_store(domain)
+   ↓
+Receives verification status
+   ↓
+Uses result as one signal in broader decision process
+```
+
+
+---
+
 # Contact
 
 - Security: support@gengeo.co
