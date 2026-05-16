@@ -280,6 +280,8 @@ https://api.gengeo.co/api/verify
 
 ```text
 /mcp
+
+Live remote MCP endpoint: https://mcp.gengeo.co/mcp
 ```
 
 ---
