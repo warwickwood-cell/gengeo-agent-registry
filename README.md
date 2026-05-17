@@ -4,9 +4,12 @@ Machine-readable verification infrastructure for AI-driven commerce.
 
 [![smithery badge](https://smithery.ai/badge/warwick/gengeo)](https://smithery.ai/server/warwick/gengeo)
 
-GenGEO provides a binary verification signal that AI agents and commerce systems can use when evaluating ecommerce merchants.
+GenGEO enables AI agents and developers to verify whether an ecommerce merchant meets a high-confidence verification threshold before making purchasing or recommendation decisions.
 
-As AI agents begin making purchasing and recommendation decisions on behalf of users, machine-readable merchant verification becomes increasingly important.
+As AI agents increasingly transact autonomously on behalf of users, failed purchases, weak policies, unclear shipping terms, and low-trust checkout experiences become major risks.
+
+GenGEO helps reduce transaction uncertainty by providing a standardized verification signal that agents can incorporate into broader commerce decision frameworks.
+
 
 ---
 
