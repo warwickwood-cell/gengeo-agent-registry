@@ -1,39 +1,65 @@
 # GenGEO Agent Registry
 
-Machine-readable verification infrastructure for AI-driven commerce.
+Machine-readable trust infrastructure for autonomous commerce systems.
 
 [![smithery badge](https://smithery.ai/badge/warwick/gengeo)](https://smithery.ai/server/warwick/gengeo)
 
-GenGEO enables AI agents and developers to verify whether an ecommerce merchant meets a high-confidence verification threshold before making purchasing or recommendation decisions.
+GenGEO enables AI agents and developers to verify whether an ecommerce merchant meets a high operational verification threshold before autonomous purchasing or recommendation decisions are made.
 
-As AI agents increasingly transact autonomously on behalf of users, failed purchases, weak policies, unclear shipping terms, and low-trust checkout experiences become major risks.
+As AI agents increasingly transact on behalf of users, a major infrastructure problem is emerging:
 
-GenGEO helps reduce transaction uncertainty by providing a standardized verification signal that agents can incorporate into broader commerce decision frameworks.
+There is currently no standardized machine-readable trust layer for determining whether a merchant is operationally ready and appropriate for autonomous transactions.
 
+At the same time, legitimate AI-driven commerce activity is increasingly colliding with fraud and bot-detection systems that cannot distinguish autonomous AI agents from malicious automation.
+
+AI agents can already:
+- discover products
+- browse stores
+- compare pricing
+- recommend merchants
+- and increasingly complete purchases
+
+But there is still no common verification layer for evaluating merchant transaction readiness before autonomous commerce actions proceed.
+
+GenGEO helps reduce transaction uncertainty by providing a deterministic machine-readable verification signal that agents can incorporate into broader commerce decision frameworks.
 
 ---
 
 # Why This Exists
 
-Traditional ecommerce trust systems were built for humans:
+Traditional ecommerce trust systems were designed primarily for humans:
 - branding
 - visual design
 - reviews
 - SEO
 - reputation
 
-AI agents evaluate commerce differently.
+Autonomous agents evaluate commerce differently.
 
-Agents:
-- parse structured data
-- evaluate policies
-- assess operational signals
-- analyze machine-readable trust indicators
-- then make decisions
+Agents increasingly rely on:
+- structured data
+- machine-readable policies
+- operational signals
+- transaction readiness
+- trust infrastructure
 
-However, there is currently no standard verification layer for AI-driven commerce.
+GenGEO exists to help address this emerging infrastructure gap through machine-readable merchant verification for autonomous commerce systems.
 
-GenGEO exists to provide a neutral, machine-readable verification signal for ecommerce merchants.
+---
+
+# Verification Model
+
+GenGEO uses a deterministic verification model designed to evaluate whether merchants meet a high operational verification threshold before autonomous agents proceed with commerce actions.
+
+Verification may include signals such as:
+- machine-readable policies
+- operational completeness
+- transaction readiness
+- structured commerce metadata
+- storefront verification state
+- agent compatibility checks
+
+The goal is not to guarantee outcomes, but to provide autonomous systems with a stronger machine-readable trust signal that may improve transaction confidence within broader agent decision frameworks.
 
 ---
 
