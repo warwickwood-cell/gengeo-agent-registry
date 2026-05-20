@@ -53,14 +53,17 @@ Uses verification signal within broader transaction decision process
 Continues autonomous commerce workflow
 GenGEO MCP Verification
 
-Remote MCP endpoint:
+```
 
+Remote MCP endpoint:
+```
 https://mcp.gengeo.co/mcp
 
 (Requires an MCP-compatible client)
+```
 
 Verification tool:
-
+```
 verify_store(domain)
 
 Example request:
@@ -68,15 +71,18 @@ Example request:
 {
   "domain": "example.com"
 }
+```
 
 Example response:
-
+```
 {
   "verified": true,
   "status": "active",
   "decision": "verified",
   "eligible_for_ai_agent_purchase": "yes"
 }
+
+```
 
 Verification Model
 
@@ -92,6 +98,7 @@ storefront verification state
 agent compatibility checks
 
 The goal is not to guarantee outcomes, but to provide autonomous systems with a stronger machine-readable trust signal that may improve transaction confidence within broader agent decision frameworks.
+
 
 Enterprise Relevance
 
