@@ -1,119 +1,174 @@
 # OpenAI Agents Commerce Verification Example
 
-This example demonstrates how OpenAI-based autonomous commerce agents can use GenGEO merchant verification before executing transactional workflows.
+This example demonstrates an optional pre-transaction merchant verification pattern for ACP-style agentic commerce workflows.
 
-As AI agents become increasingly capable of autonomous purchasing and recommendation decisions, there is currently no standardized trust layer for determining whether a merchant is operationally ready and appropriate for autonomous commerce interactions.
+Reference implementation:
+https://github.com/warwickwood-cell/gengeo-agent-registry/tree/main/examples/openai-agents-commerce-verification
 
-GenGEO provides a machine-readable verification signal that can be integrated into MCP-enabled AI commerce systems.
+The example shows how an OpenAI-style autonomous commerce agent can call a merchant verification tool before continuing a transactional workflow.
+
+The goal is not to gatekeep transactions or require a single provider. Instead, this explores whether agentic commerce systems may benefit from interoperable trust and merchant readiness signals prior to autonomous purchasing actions.
 
 ---
 
-# The Problem Nobody Is Talking About
+# ACP Compatibility
 
-There is currently no standard way for AI agents to verify whether a merchant is operationally ready for autonomous transactions.
+This implementation is designed to be compatible with ACP-style commerce flows and MCP-enabled agent architectures.
+
+Example flow:
+
+```text id="v9z7bo"
+1. Agent identifies merchant
+2. Agent checks merchant verification signal
+3. Agent evaluates trust response
+4. Agent proceeds through ACP transaction flow
+```
+
+Architecture overview:
+
+```text id="5ebayp"
+User Request
+    ↓
+OpenAI Autonomous Commerce Agent
+    ↓
+ACP Merchant Discovery / Commerce Flow
+    ↓
+GenGEO Verification Check
+    ↓
+Verification Response
+    ↓
+Agent Decision Process
+    ↓
+ACP Cart / Order / Payment Flow
+```
+
+Verification is treated as one signal within a broader agent decision framework.
+
+---
+
+# Why This Matters
 
 Traditional ecommerce trust systems were designed primarily for humans:
-- branding
-- reviews
-- visual trust
-- SEO
-- reputation
+
+* branding
+* reviews
+* visual trust
+* SEO
+* reputation
 
 Autonomous agents evaluate commerce differently.
 
-Agents increasingly rely on:
-- structured data
-- operational signals
-- machine-readable policies
-- transaction readiness
-- trust infrastructure
+AI agents increasingly rely on:
 
-At the same time, legitimate AI transactions are beginning to encounter friction from fraud and bot-detection systems that cannot distinguish autonomous AI agents from malicious automation.
+* structured data
+* machine-readable policies
+* operational readiness
+* transaction reliability
+* trust infrastructure
+* verification signals
+
+At the same time, legitimate AI-agent transactions are beginning to encounter friction from fraud and bot-detection systems that cannot distinguish autonomous AI agents from malicious automation.
 
 This creates a new infrastructure challenge for agentic commerce:
-How should AI agents verify merchant trust and transaction readiness before taking autonomous action?
+
+How should autonomous agents evaluate merchant trust and transaction readiness before taking autonomous commerce actions?
 
 ---
 
-# Example Workflow
-
-```text
-User request
-    ↓
-OpenAI autonomous commerce agent
-    ↓
-Identifies merchant candidate
-    ↓
-Calls GenGEO MCP verification tool
-    ↓
-Receives verification status
-    ↓
-Uses verification signal within broader transaction decision process
-    ↓
-Continues autonomous commerce workflow
-GenGEO MCP Verification
-
-```
+# MCP Verification Flow
 
 Remote MCP endpoint:
-```
+
+```text id="m0n0l5"
 https://mcp.gengeo.co/mcp
+```
 
 (Requires an MCP-compatible client)
-```
 
 Verification tool:
-```
+
+```text id="3n6g48"
 verify_store(domain)
+```
 
 Example request:
 
+```json id="44u3s6"
 {
   "domain": "example.com"
 }
 ```
 
 Example response:
-```
+
+```json id="kjc49m"
 {
   "verified": true,
   "status": "active",
   "decision": "verified",
-  "eligible_for_ai_agent_purchase": "yes"
+  "eligible_for_ai_agent_purchase": "yes",
+  "registry": "gengeo"
 }
-
 ```
 
-Verification Model
+---
+
+# Verification Model
 
 GenGEO uses a deterministic verification model designed to evaluate whether merchants meet a high operational verification threshold before autonomous agents proceed with commerce actions.
 
 Verification may include signals such as:
 
-machine-readable policies
-operational completeness
-transaction readiness
-structured commerce metadata
-storefront verification state
-agent compatibility checks
+* machine-readable policies
+* operational completeness
+* structured commerce metadata
+* storefront verification state
+* transaction readiness
+* agent compatibility checks
 
-The goal is not to guarantee outcomes, but to provide autonomous systems with a stronger machine-readable trust signal that may improve transaction confidence within broader agent decision frameworks.
+The goal is not to guarantee transaction outcomes, but to provide autonomous systems with stronger machine-readable trust signals that may improve transaction confidence within broader agent decision frameworks.
 
+---
 
-Enterprise Relevance
+# Design Principles
+
+This example intentionally follows several principles:
+
+* verification should remain optional
+* agents should retain decision autonomy
+* verification should be vendor-neutral
+* trust signals should be machine-readable
+* verification providers should remain interoperable
+* ACP transaction flows should remain fully backward compatible
+
+---
+
+# Enterprise Relevance
 
 This infrastructure may help support:
 
-autonomous commerce safety
-merchant verification
-AI-agent transaction assurance
-operational trust evaluation
-fraud differentiation for autonomous agents
-transaction confidence infrastructure
+* autonomous commerce safety
+* merchant verification
+* transaction confidence infrastructure
+* AI-agent transaction assurance
+* operational trust evaluation
+* autonomous commerce interoperability
+* fraud differentiation for legitimate AI agents
 
-Verification status should be treated as one signal within a broader agent decision framework.
+Verification status should always be treated as one signal within a broader agent decision framework.
 
-GenGEO
+---
+
+# Related ACP Discussion
+
+We have also opened a separate ACP Discussion exploring whether ACP should support optional pre-transaction merchant verification hooks as part of future extension or interoperability models.
+
+Discussion link:
+https://github.com/agentic-commerce-protocol/agentic-commerce-protocol/discussions/257
+
+---
+
+# GenGEO
 
 Website:
 https://gengeo.co
