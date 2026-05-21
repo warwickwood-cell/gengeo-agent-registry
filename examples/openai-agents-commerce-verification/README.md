@@ -168,6 +168,13 @@ https://github.com/agentic-commerce-protocol/agentic-commerce-protocol/discussio
 
 ---
 
+# Developer docs
+```text
+https://gengeo.co/docs
+```
+
+---
+
 # GenGEO
 
 Website:
