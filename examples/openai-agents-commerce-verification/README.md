@@ -2,8 +2,8 @@
 
 This example demonstrates an optional pre-transaction merchant verification pattern for ACP-style agentic commerce workflows.
 
-Reference implementation:
-https://github.com/warwickwood-cell/gengeo-agent-registry/tree/main/examples/openai-agents-commerce-verification
+Reference implementation repository:
+https://github.com/warwickwood-cell/gengeo-agent-registry
 
 The example shows how an OpenAI-style autonomous commerce agent can call a merchant verification tool before continuing a transactional workflow.
 
