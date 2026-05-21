@@ -86,6 +86,21 @@ GenGEO provides verification status only.
 
 ---
 
+# Documentation
+
+Developer documentation:
+https://gengeo.co/docs
+
+Includes:
+- Verification API
+- MCP integration
+- ACP compatibility
+- Example responses
+- Verification methodology
+
+---
+
+
 # Verification Endpoint
 
 Agents and developers can verify merchants in real time:
@@ -311,6 +326,14 @@ https://api.gengeo.co/api/verify
 /mcp
 
 Live remote MCP endpoint: https://mcp.gengeo.co/mcp
+```
+
+---
+
+# Developer docs
+
+```text
+https://gengeo.co/docs
 ```
 
 ---
