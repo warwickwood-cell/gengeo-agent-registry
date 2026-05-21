@@ -57,29 +57,40 @@ Uses verification signal within broader transaction decision process
     ↓
 Continues autonomous commerce workflow
 GenGEO MCP Verification
+```
+
+---
 
 Remote MCP endpoint:
-
+```
 https://mcp.gengeo.co/mcp
+```
+---
 
 Verification tool:
-
+```
 verify_store(domain)
+```
+---
 
 Example:
-
+```
 {
   "domain": "example.com"
 }
+```
 
 Example response:
-
+```
 {
   "verified": true,
   "status": "active",
   "decision": "verified",
   "eligible_for_ai_agent_purchase": "yes"
 }
+```
+---
+
 Enterprise Relevance
 
 This infrastructure may help support:
@@ -93,13 +104,27 @@ AI-agent transaction confidence
 
 Verification status should be treated as one signal within a broader enterprise decision framework.
 
+---
+
 GenGEO
 
 Website:
+```
 https://gengeo.co
+```
 
 Verification API:
+```
 https://api.gengeo.co/api/verify
+```
 
 MCP Endpoint:
+```
 https://mcp.gengeo.co/mcp
+```
+
+Developer docs:
+```
+https://gengeo.co/docs
+```
+
