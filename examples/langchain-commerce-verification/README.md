@@ -13,7 +13,10 @@ GenGEO provides a simple MCP-compatible verification tool:
 
 ```text
 verify_store(domain)
+```
+
 Example Agent Flow
+```
 User request
   ↓
 Agent finds candidate products
@@ -25,16 +28,26 @@ Agent calls GenGEO verify_store(domain)
 Agent receives verification status
   ↓
 Agent uses result as one signal in broader decision process
+```
+---
+
 MCP Endpoint
+```
 https://mcp.gengeo.co/mcp
+```
+
 Tool
+```
 {
   "tool": "verify_store",
   "input": {
     "domain": "example.com"
   }
 }
+```
+
 Example Result
+```
 {
   "domain": "example.com",
   "verified": true,
@@ -43,9 +56,20 @@ Example Result
   "decision": "verified",
   "registry": "GenGEO"
 }
+```
+
 Important
 
 GenGEO does not rank merchants, recommend merchants, or guarantee transaction outcomes.
 
 Verification status should be treated as one signal within a broader agent decision framework.
 EOF
+
+---
+
+## Developer docs
+```
+https://gengeo.co/docs
+```
+
+
