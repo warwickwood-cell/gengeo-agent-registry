@@ -338,6 +338,14 @@ https://gengeo.co/docs
 
 ---
 
+# ACP Overview
+
+```text
+https://gengeo.co/acp
+```
+
+---
+
 
 ## How GenGEO Fits Into Agentic Commerce
 
