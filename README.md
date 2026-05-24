@@ -25,6 +25,65 @@ GenGEO helps reduce transaction uncertainty by providing a deterministic machine
 
 ---
 
+GenGEO provides lightweight SDKs and APIs for merchant verification within autonomous commerce and AI-agent workflows.
+
+## Install
+
+```bash
+# JavaScript / Node.js
+npm install gengeo
+
+# Python
+pip install gengeo
+```
+
+## Quick start
+
+### JavaScript
+
+```javascript
+import { verify } from 'gengeo'
+
+const result = await verify('store.example.com')
+
+console.log(result)
+
+/*
+{
+  verified: true,
+  decision: 'verified',
+  registry: 'gengeo'
+}
+*/
+```
+
+### Python
+
+```python
+from gengeo import verify
+
+result = verify('store.example.com')
+
+print(result)
+
+# {
+#   'verified': True,
+#   'decision': 'verified',
+#   'registry': 'gengeo'
+# }
+```
+
+### cURL
+
+```bash
+curl https://api.gengeo.co/api/verify?domain=store.example.com
+```
+
+For MCP-enabled integrations and agent workflows, see:
+https://gengeo.co/docs
+
+---
+
 # Why This Exists
 
 Traditional ecommerce trust systems were designed primarily for humans:
