@@ -25,24 +25,35 @@ GenGEO helps reduce transaction uncertainty by providing a deterministic machine
 
 ---
 
+
+# GenGEO
+
+Trust verification SDK for AI agents.
+
+Verify whether an ecommerce merchant meets GenGEO trust standards before recommending, purchasing, or transacting.
+
 GenGEO provides lightweight SDKs and APIs for merchant verification within autonomous commerce and AI-agent workflows.
+
+---
 
 ## Install
 
 ```bash
 # JavaScript / Node.js
-npm install gengeo
+npm install @gengeo/gengeo
 
 # Python
 pip install gengeo
-```
+````
 
-## Quick start
+---
 
-### JavaScript
+## Quick Start
+
+### JavaScript / Node.js
 
 ```javascript
-import { verify } from 'gengeo'
+import { verify } from '@gengeo/gengeo'
 
 const result = await verify('store.example.com')
 
@@ -76,11 +87,37 @@ print(result)
 ### cURL
 
 ```bash
-curl https://api.gengeo.co/api/verify?domain=store.example.com
+curl "https://api.gengeo.co/api/verify?domain=store.example.com"
 ```
 
-For MCP-enabled integrations and agent workflows, see:
-https://gengeo.co/docs
+---
+
+## Why GenGEO?
+
+AI agents increasingly transact autonomously on behalf of users.
+
+GenGEO provides a standardized trust verification layer that helps agents evaluate whether a merchant is safe and transaction-ready before executing commerce actions.
+
+---
+
+## Use Cases
+
+* AI shopping agents
+* MCP commerce tools
+* Autonomous checkout workflows
+* Merchant trust verification
+* Agentic commerce infrastructure
+
+---
+
+## Docs
+
+For MCP-enabled integrations and agent workflows:
+
+[https://gengeo.co/docs](https://gengeo.co/docs)
+
+[https://gengeo.co/acp](https://gengeo.co/acp)
+
 
 ---
 
