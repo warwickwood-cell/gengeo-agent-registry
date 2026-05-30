@@ -77,23 +77,35 @@ How should autonomous agents evaluate merchant trust and transaction readiness b
 
 # MCP Verification Flow
 
-Remote MCP endpoint:
+Remote MCP endpoint for ChatGPT Apps / OpenAI-compatible MCP clients:
 
-```text id="m0n0l5"
+```text
+https://chatgpt-mcp.gengeo.co/mcp
+```
+
+This endpoint exposes GenGEO merchant verification through a remote MCP server.
+
+Legacy/general MCP references may use:
+
+```text
 https://mcp.gengeo.co/mcp
 ```
 
-(Requires an MCP-compatible client)
+For ChatGPT Apps submission and OpenAI Developer Mode testing, use:
+
+```text
+https://chatgpt-mcp.gengeo.co/mcp
+```
 
 Verification tool:
 
-```text id="3n6g48"
-verify_store(domain)
+```text
+verify_merchant(domain)
 ```
 
 Example request:
 
-```json id="44u3s6"
+```json
 {
   "domain": "example.com"
 }
@@ -101,15 +113,22 @@ Example request:
 
 Example response:
 
-```json id="kjc49m"
+```json
 {
   "verified": true,
   "status": "active",
   "decision": "verified",
-  "eligible_for_ai_agent_purchase": "yes",
-  "registry": "gengeo"
+  "registry": "GenGEO",
+  "merchant_domain": "example.com"
 }
 ```
+
+Notes:
+
+* GenGEO verification is informational.
+* Verification means the merchant appears in the GenGEO registry and has met detectable operational readiness signals.
+* Verification is not a legal, payment, fulfilment, product-quality, fraud-prevention, or security guarantee.
+* Unverified does not necessarily mean unsafe; it means GenGEO cannot verify the merchant at that time.
 
 ---
 
