@@ -4,6 +4,8 @@ Machine-readable trust infrastructure for autonomous commerce systems.
 
 [![smithery badge](https://smithery.ai/badge/warwick/gengeo)](https://smithery.ai/server/warwick/gengeo)
 
+GenGEO is building the world's largest merchant trust registry for AI agents and the foundation of a global reputation network for agentic commerce.
+
 GenGEO enables AI agents and developers to verify whether an ecommerce merchant meets a high operational verification threshold before autonomous purchasing or recommendation decisions are made.
 
 As AI agents increasingly transact on behalf of users, a major infrastructure problem is emerging:
