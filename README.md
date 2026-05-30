@@ -333,6 +333,30 @@ Example configuration:
 
 ---
 
+# Open AI endpoint
+
+Remote MCP endpoint for ChatGPT Apps / OpenAI-compatible MCP clients:
+
+```text
+https://chatgpt-mcp.gengeo.co/mcp
+```
+
+This endpoint exposes GenGEO merchant verification through a remote MCP server.
+
+Legacy/general MCP references may use:
+
+```text
+https://mcp.gengeo.co/mcp
+```
+
+For ChatGPT Apps submission and OpenAI Developer Mode testing, use:
+
+```text
+https://chatgpt-mcp.gengeo.co/mcp
+```
+
+---
+
 # Example Agent Workflow
 
 ```text
